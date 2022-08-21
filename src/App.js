@@ -7,6 +7,8 @@ import {Route, Routes} from "react-router-dom"
 
 import Basket from "./components/views/basket/Basket";
 import BasketContextProvider from "./context/BasketContext";
+import User from "./components/views/auth/User";
+import Login from "./components/views/auth/Login";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -23,6 +25,8 @@ function App() {
                     <Routes>
                         <Route path="" element={<Products/>}/>
                         <Route path="basket" element={<Basket/>}/>
+                        <Route path="/user/info" element={<User />} />
+                        <Route path="/login" element={<Login />} />
                     </Routes>
                 </Wrapper>
             </BasketContextProvider>
