@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_3ae19541df724c5db13866fdaa7fc133 }}/dereypl/uj-ebiznes-frontend:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_3ae19541df724c5db13866fdaa7fc133 }}/uj-ebiznes-frontend:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -48,4 +48,4 @@ jobs:
         app-name: 'uj-ebiznes-frontend'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_a9983d3d364445e0a0f6b6ce15898af0 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_3ae19541df724c5db13866fdaa7fc133 }}/dereypl/uj-ebiznes-frontend:${{ github.sha }}'
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_3ae19541df724c5db13866fdaa7fc133 }}/uj-ebiznes-frontend:${{ github.sha }}'
