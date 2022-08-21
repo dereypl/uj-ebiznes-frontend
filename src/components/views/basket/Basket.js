@@ -17,6 +17,7 @@ import {
     TableHeader,
     Wrapper
 } from "./Basket.styles";
+import TopBar from "../../shared/topBar/TopBar";
 
 
 const Basket = () => {
@@ -33,6 +34,7 @@ const Basket = () => {
 
     return (
         <Wrapper>
+            <TopBar/>
             {paymentSuccessful ?
                 <>
                     <PaymentSuccessFullWrapper>

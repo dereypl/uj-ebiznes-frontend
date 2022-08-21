@@ -6,22 +6,24 @@ import {addProduct} from "../../../store/reducers/basket";
 import {getCategoriesStateRoot} from "../../../store/reducers/categories";
 import CategorySideBar from "../../shared/category/CategorySideBar";
 import {AddShoppingCartIconStyled, AddToBasketButton, Data, DataRow, Row, Table, TableHeader, Wrapper} from "./Products.styles";
+import TopBar from "../../shared/topBar/TopBar";
 
 const Products = () => {
     const dispatch = useDispatch();
     const {list: {items: products, loading}} = useSelector(getProductsStateRoot)
     const {activeId} = useSelector(getCategoriesStateRoot)
 
-    useEffect(() => {
-        if (activeId) dispatch(ProductsService.fetchByCategoryId({id: activeId}))
-        else dispatch(ProductsService.fetchAll())
-
-    }, [dispatch, activeId]);
+    // useEffect(() => {
+    //     if (activeId) dispatch(ProductsService.fetchByCategoryId({id: activeId}))
+    //     else dispatch(ProductsService.fetchAll())
+    //
+    // }, [dispatch, activeId]);
 
     const handleAddToBasket = (product) => dispatch(addProduct(product))
 
     return (
         <Wrapper>
+            <TopBar/>
             <CategorySideBar/>
             {loading ?
                 <div>Loading...</div>

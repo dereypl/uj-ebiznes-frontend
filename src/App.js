@@ -20,7 +20,6 @@ function App() {
     return (
         <StylesProvider>
             <BasketContextProvider>
-                <TopBar/>
                 <Wrapper>
                     <Routes>
                         <Route path="" element={<Products/>}/>

@@ -3,9 +3,9 @@ import {getUserBasket} from "../api/products";
 
 const initialState = {products: []}
 
-export const BasketContext = React.createContext(initialState);
+export const ProductsContext = React.createContext(initialState);
 
-export const BasketContextProvider = ({children}) => {
+export const ProductsContextWrapper = ({children}) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -15,9 +15,9 @@ export const BasketContextProvider = ({children}) => {
     }, []);
 
     return (
-        <BasketContext.Provider value={{products, setProducts}}>
+        <ProductsContextWrapper.Provider value={{products, setProducts}}>
             {children}
-        </BasketContext.Provider>
+        </ProductsContextWrapper.Provider>
     );
 };
 
