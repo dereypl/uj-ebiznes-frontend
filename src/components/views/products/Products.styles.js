@@ -4,6 +4,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 export const Wrapper = styled.div`
   display: flex;
   width: 100%;
+  padding-right: 10px;
 `;
 
 export const AddShoppingCartIconStyled = styled(AddShoppingCartIcon)`

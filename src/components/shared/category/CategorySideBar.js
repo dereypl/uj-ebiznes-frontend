@@ -15,8 +15,8 @@ const CategorySideBar = () => {
     return (
         <SideWrapper>
             {categories?.map(category => (
-                <Category key={category._id} active={category._id === activeId}
-                          onClick={() => dispatch(setActiveCategory(category._id))}>
+                <Category key={category.id} active={category.id === activeId}
+                          onClick={() => dispatch(setActiveCategory(category.id))}>
                     <div>{category.name}</div>
                 </Category>
             ))}

@@ -1,25 +1,46 @@
-import React, {useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import ProductsService from "../../../services/ProductsService";
-import {getProductsStateRoot} from "../../../store/reducers/products";
-import {addProduct} from "../../../store/reducers/basket";
-import {getCategoriesStateRoot} from "../../../store/reducers/categories";
 import CategorySideBar from "../../shared/category/CategorySideBar";
-import {AddShoppingCartIconStyled, AddToBasketButton, Data, DataRow, Row, Table, TableHeader, Wrapper} from "./Products.styles";
+import {
+    AddShoppingCartIconStyled,
+    AddToBasketButton,
+    Data,
+    DataRow,
+    Row,
+    Table,
+    TableHeader,
+    Wrapper
+} from "./Products.styles";
 import TopBar from "../../shared/topBar/TopBar";
+import {ProductsContext} from "../../../context/ProductsContext";
+import ProductsService from "../../../services/ProductsService";
+import {getCategoriesStateRoot} from "../../../store/reducers/categories";
+import {BasketContext} from "../../../context/BasketContext";
 
 const Products = () => {
     const dispatch = useDispatch();
-    const {list: {items: products, loading}} = useSelector(getProductsStateRoot)
-    const {activeId} = useSelector(getCategoriesStateRoot)
+    const {addProductToBasket} = useContext(BasketContext)
+    const {activeId: activeCategoryId, list: {loading}} = useSelector(getCategoriesStateRoot)
+    const {products, setProducts} = useContext(ProductsContext)
+    const [productsByCategory, setProductsByCategory] = useState([])
 
-    // useEffect(() => {
-    //     if (activeId) dispatch(ProductsService.fetchByCategoryId({id: activeId}))
-    //     else dispatch(ProductsService.fetchAll())
-    //
-    // }, [dispatch, activeId]);
 
-    const handleAddToBasket = (product) => dispatch(addProduct(product))
+    useEffect(() => {
+        (async () => {
+            const prods = await ProductsService.fetchAll()
+            setProducts(prods)
+            setProductsByCategory(prods)
+        })()
+
+    }, [dispatch]);
+
+    useEffect(() => {
+        if (activeCategoryId === 0) setProductsByCategory(products)
+        else {
+            const filteredProducts = products.filter(prod => prod.categoryId === activeCategoryId)
+            setProductsByCategory(filteredProducts)
+        }
+    }, [activeCategoryId])
 
     return (
         <Wrapper>
@@ -31,18 +52,16 @@ const Products = () => {
                     <thead>
                     <Row>
                         <TableHeader>Nazwa</TableHeader>
-                        <TableHeader>Opis</TableHeader>
                         <TableHeader>Cena</TableHeader>
                         <TableHeader/>
                     </Row>
                     </thead>
                     <tbody>
-                    {products.map((product) => (
-                        <DataRow key={product._id}>
+                    {productsByCategory.map((product) => (
+                        <DataRow key={product.id}>
                             <Data>{product.name}</Data>
-                            <Data>{product.description}</Data>
                             <Data>{product.price.toFixed(2)} zł</Data>
-                            <Data onClick={() => handleAddToBasket(product)}>
+                            <Data onClick={() => addProductToBasket(product)}>
                                 <AddToBasketButton>Dodaj do koszyka<AddShoppingCartIconStyled/></AddToBasketButton>
                             </Data>
                         </DataRow>

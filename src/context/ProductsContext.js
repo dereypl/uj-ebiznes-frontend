@@ -5,8 +5,9 @@ const initialState = {products: []}
 
 export const ProductsContext = React.createContext(initialState);
 
-export const ProductsContextWrapper = ({children}) => {
+export const ProductsContextProvider = ({children}) => {
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState([]);
 
     useEffect(() => {
         (async () => {
@@ -15,10 +16,10 @@ export const ProductsContextWrapper = ({children}) => {
     }, []);
 
     return (
-        <ProductsContextWrapper.Provider value={{products, setProducts}}>
+        <ProductsContext.Provider value={{products, setProducts}}>
             {children}
-        </ProductsContextWrapper.Provider>
+        </ProductsContext.Provider>
     );
 };
 
-export default BasketContextProvider;
+export default ProductsContextProvider;
