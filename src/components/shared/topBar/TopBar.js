@@ -9,7 +9,7 @@ const TopBar = () => {
     const {products} = useContext(BasketContext)
     const productsCount = products.length
 
-    const handleGoToBasket = () => productsCount ? navigate('basket') : null
+    const handleGoToBasket = () => productsCount ? navigate('/basket') : null
 
     return (
         <FixedBar>

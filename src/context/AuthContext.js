@@ -18,7 +18,7 @@ export const AuthContextProvider = ({children}) => {
             setToken(token)
             navigate('/products')
         }
-    }, [])
+    }, [navigate])
 
     return (
         <AuthContext.Provider value={{token, user: null}}>
@@ -27,4 +27,4 @@ export const AuthContextProvider = ({children}) => {
     );
 };
 
-export default BasketContextProvider;
+export default AuthContextProvider;

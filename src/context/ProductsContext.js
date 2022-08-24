@@ -7,6 +7,7 @@ export const ProductsContext = React.createContext(initialState);
 
 export const ProductsContextProvider = ({children}) => {
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState([]);
 
     useEffect(() => {
         (async () => {
@@ -21,4 +22,4 @@ export const ProductsContextProvider = ({children}) => {
     );
 };
 
-export default BasketContextProvider;
+export default ProductsContextProvider;

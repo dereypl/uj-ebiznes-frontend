@@ -10,6 +10,7 @@ import BasketContextProvider from "./context/BasketContext";
 import User from "./components/views/auth/User";
 import Login from "./components/views/public/Login";
 import {AuthContextProvider} from "./context/AuthContext";
+import ProductsContextProvider from "./context/ProductsContext";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -21,16 +22,18 @@ function App() {
     return (
         <StylesProvider>
             <AuthContextProvider>
-                <BasketContextProvider>
-                    <Wrapper>
-                        <Routes>
-                            <Route path="/" element={<Login/>}/>
-                            <Route path="/products" element={<Products/>}/>
-                            <Route path="basket" element={<Basket/>}/>
-                            {/*<Route path="/user/info" element={<User/>}/>*/}
-                        </Routes>
-                    </Wrapper>
-                </BasketContextProvider>
+                <ProductsContextProvider>
+                    <BasketContextProvider>
+                        <Wrapper>
+                            <Routes>
+                                <Route path="/" element={<Login/>}/>
+                                <Route path="/products" element={<Products/>}/>
+                                <Route path="/basket" element={<Basket/>}/>
+                                {/*<Route path="/user/info" element={<User/>}/>*/}
+                            </Routes>
+                        </Wrapper>
+                    </BasketContextProvider>
+                </ProductsContextProvider>
             </AuthContextProvider>
         </StylesProvider>
     );

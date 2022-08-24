@@ -1,5 +1,6 @@
 import axios from 'axios';
-export const getAPIAddress = () => `http://localhost:8080`;
+
+export const getAPIAddress = () => `http://uj-ebiznes-backend.azurewebsites.net:80`;
 
 export const fetchItems = ({path, ...params}) => axios
     .get(`${getAPIAddress()}/${path}`, {

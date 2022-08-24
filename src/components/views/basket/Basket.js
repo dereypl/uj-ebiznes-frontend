@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {useDispatch,} from "react-redux";
-import useBasket from "../../hooks/useBasket";
 import {useNavigate} from "react-router-dom";
 import {
     BasketFooter,
@@ -18,18 +17,18 @@ import {
     Wrapper
 } from "./Basket.styles";
 import TopBar from "../../shared/topBar/TopBar";
+import {BasketContext} from "../../../context/BasketContext";
 
 
 const Basket = () => {
     let navigate = useNavigate();
+    const {products, removeFromBaster} = useContext(BasketContext)
     const dispatch = useDispatch();
-
-    const {items: products, totalPrice, handleProductRemove, clearBasket} = useBasket()
     const [paymentSuccessful, setPaymentSuccessful] = useState(false)
 
     const handlePayment = () => {
-        dispatch(clearBasket())
-        setPaymentSuccessful(true)
+        // dispatch(clearBasket())
+        // setPaymentSuccessful(true)
     }
 
     return (
@@ -50,19 +49,15 @@ const Basket = () => {
                         <thead>
                         <Row>
                             <TableHeader>Nazwa</TableHeader>
-                            <TableHeader>Opis</TableHeader>
                             <TableHeader>Cena</TableHeader>
-                            <TableHeader>Ilość</TableHeader>
                             <TableHeader/>
                         </Row>
                         </thead>
                         <tbody>
-                        {products.map((product) => (<DataRow key={product._id}>
+                        {products.map((product, index) => (<DataRow key={product.id+index}>
                             <Data>{product.name}</Data>
-                            <Data>{product.description}</Data>
                             <Data>{product.price.toFixed(2)} zł</Data>
-                            <Data>{product.count}</Data>
-                            <Data onClick={() => handleProductRemove(product._id)}>
+                            <Data onClick={() => removeFromBaster(product.id)}>
                                 <RemoveButton>Usuń produkt<DeleteStyled/></RemoveButton>
                             </Data>
                         </DataRow>))}
@@ -70,7 +65,7 @@ const Basket = () => {
                     </Table>
                     <BasketSummary>
                         Razem do zapłaty:
-                        <div>{totalPrice.toFixed(2)} zł</div>
+                        <div>{0} zł</div>
                     </BasketSummary>
                     <BasketFooter>
                         <RemoveButton onClick={() => navigate('/')}>Wróc do sklepu</RemoveButton>

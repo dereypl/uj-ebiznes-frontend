@@ -3,7 +3,7 @@ import {createSlice} from "@reduxjs/toolkit";
 export const getCategoriesStateRoot = state => state.categories;
 
 const defaultCategory = {
-    _id: 0,
+    id: 0,
     name: 'Wszystkie'
 }
 
