@@ -1,13 +1,12 @@
 import './App.css';
 import Products from "./components/views/products/Products";
 import StylesProvider from "./ui-config/StylesProvider";
-import TopBar from "./components/shared/topBar/TopBar";
 import styled from "styled-components";
 import {Route, Routes} from "react-router-dom"
 
 import Basket from "./components/views/basket/Basket";
 import BasketContextProvider from "./context/BasketContext";
-import User from "./components/views/auth/User";
+import Auth from "./components/views/auth/Auth";
 import Login from "./components/views/public/Login";
 import {AuthContextProvider} from "./context/AuthContext";
 import ProductsContextProvider from "./context/ProductsContext";
@@ -29,7 +28,7 @@ function App() {
                                 <Route path="/" element={<Login/>}/>
                                 <Route path="/products" element={<Products/>}/>
                                 <Route path="/basket" element={<Basket/>}/>
-                                {/*<Route path="/user/info" element={<User/>}/>*/}
+                                <Route path="/auth" element={<Auth/>}/>
                             </Routes>
                         </Wrapper>
                     </BasketContextProvider>
