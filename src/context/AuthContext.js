@@ -1,24 +1,25 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {getAuthStateRoot} from "../store/reducers/auth";
 
-const initialState = {token: null, user: null}
+const initialState = {token: null}
 
 export const AuthContext = React.createContext(initialState);
 
 export const AuthContextProvider = ({children}) => {
-    const [token, setToken] = useState(null);
-    const [user, setUser] = useState(null);
     const navigate = useNavigate()
     const location = useLocation()
+    const {token} = useSelector(getAuthStateRoot)
 
-    // useEffect(()=>{
-    //     if(!token && location.pathname !== '/'){
-    //         navigate('/')
-    //     }
-    // }, [location, token, navigate])
+    useEffect(() => {
+        if (!token && location.pathname !== '/') {
+            navigate('/')
+        }
+    }, [location, token, navigate])
 
     return (
-        <AuthContext.Provider value={{token, setToken, user, setUser}}>
+        <AuthContext.Provider value={{token}}>
             {children}
         </AuthContext.Provider>
     );

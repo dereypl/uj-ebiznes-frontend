@@ -1,5 +1,4 @@
-import React, {useContext, useState} from 'react';
-import {useDispatch,} from "react-redux";
+import React, {useContext, useMemo, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import {
     BasketFooter,
@@ -22,14 +21,15 @@ import {BasketContext} from "../../../context/BasketContext";
 
 const Basket = () => {
     let navigate = useNavigate();
-    const {products, removeFromBaster} = useContext(BasketContext)
-    const dispatch = useDispatch();
+    const {products, removeFromBasket, clearBasket} = useContext(BasketContext)
     const [paymentSuccessful, setPaymentSuccessful] = useState(false)
 
     const handlePayment = () => {
-        // dispatch(clearBasket())
-        // setPaymentSuccessful(true)
+        clearBasket()
+        setPaymentSuccessful(true)
     }
+
+    const totalCost = useMemo(() => products.reduce((prev, curr) => prev + curr.price, 0), [products])
 
     return (
         <Wrapper>
@@ -39,7 +39,8 @@ const Basket = () => {
                     <PaymentSuccessFullWrapper>
                         <CheckCircleOutlineIconStyled fontSize="large"/>
                         Transakcja przebiegła pomyślnie
-                        <RemoveButton marginTop={'5rem'} onClick={() => navigate('/')}>Wróc do sklepu</RemoveButton>
+                        <RemoveButton marginTop={'5rem'} onClick={() => navigate('/products')}>Wróc do
+                            sklepu</RemoveButton>
                     </PaymentSuccessFullWrapper>
                 </>
                 :
@@ -54,10 +55,10 @@ const Basket = () => {
                         </Row>
                         </thead>
                         <tbody>
-                        {products.map((product, index) => (<DataRow key={product.id+index}>
+                        {products.map((product, index) => (<DataRow key={product.id + index}>
                             <Data>{product.name}</Data>
                             <Data>{product.price.toFixed(2)} zł</Data>
-                            <Data onClick={() => removeFromBaster(product.id)}>
+                            <Data onClick={() => removeFromBasket(product.id)}>
                                 <RemoveButton>Usuń produkt<DeleteStyled/></RemoveButton>
                             </Data>
                         </DataRow>))}
@@ -65,10 +66,10 @@ const Basket = () => {
                     </Table>
                     <BasketSummary>
                         Razem do zapłaty:
-                        <div>{0} zł</div>
+                        <div>{totalCost.toFixed(2)} zł</div>
                     </BasketSummary>
                     <BasketFooter>
-                        <RemoveButton onClick={() => navigate('/')}>Wróc do sklepu</RemoveButton>
+                        <RemoveButton onClick={() => navigate('/products')}>Wróc do sklepu</RemoveButton>
                         <RemoveButton onClick={handlePayment}>Kupuję i płacę</RemoveButton>
                     </BasketFooter>
                 </>}
