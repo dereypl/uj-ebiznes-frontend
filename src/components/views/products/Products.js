@@ -24,7 +24,6 @@ const Products = () => {
     const {products, setProducts} = useContext(ProductsContext)
     const [productsByCategory, setProductsByCategory] = useState([])
 
-
     useEffect(() => {
         (async () => {
             const prods = await ProductsService.fetchAll()
