@@ -11,11 +11,11 @@ export const AuthContextProvider = ({children}) => {
     const navigate = useNavigate()
     const location = useLocation()
 
-    useEffect(()=>{
-        if(!token && location.pathname !== '/'){
-            navigate('/')
-        }
-    }, [location, token, navigate])
+    // useEffect(()=>{
+    //     if(!token && location.pathname !== '/'){
+    //         navigate('/')
+    //     }
+    // }, [location, token, navigate])
 
     return (
         <AuthContext.Provider value={{token, setToken, user, setUser}}>
