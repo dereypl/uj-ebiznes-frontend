@@ -8,7 +8,7 @@ import {useNavigate} from "react-router-dom";
 const Login = () => {
     // const navigate = useNavigate()
     const handleLogin = () => {
-        window.location.assign(`http://uj-ebiznes-backend.azurewebsites.net/login`)
+        window.location.assign(`https://uj-ebiznes-backend.azurewebsites.net/login`)
     }
 
     // useEffect(() => {
