@@ -12,12 +12,12 @@ export const AuthContextProvider = ({children}) => {
     const location = useLocation()
     const {token} = useSelector(getAuthStateRoot)
 
-    useEffect(() => {
-        console.log({token});
-        if (!token && location.pathname !== '/') {
-            navigate('/')
-        }
-    }, [location, token, navigate])
+    // useEffect(() => {
+    //     console.log({token});
+    //     if (!token && location.pathname !== '/') {
+    //         navigate('/')
+    //     }
+    // }, [location, token, navigate])
 
     return (
         <AuthContext.Provider value={{token}}>
