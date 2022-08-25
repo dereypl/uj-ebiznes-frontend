@@ -15,7 +15,7 @@ const Auth = () => {
         dispatch(setCredentials(state, {token, user: jwt(token).name}))
 
         if (!location.pathname.includes('products')) {
-            window.location.assign(`http://uj-ebiznes-frontend.azurewebsites.net/products`)
+            window.location.assign(`https://uj-ebiznes-frontend.azurewebsites.net/products`)
         }
     }, [location, navigate])
 
