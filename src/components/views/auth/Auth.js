@@ -14,15 +14,12 @@ const Auth = () => {
         if (window.location.protocol !== "https:") {
             window.location.protocol = "http:";
             window.location.reload();
+        } else {
+            const token = location.search.split('=')[1]
+            console.log(1, token);
+            dispatch(setCredentials(state, {token, user: jwt(token).name}))
+            navigate('/products')
         }
-
-        const token = location.search.split('=')[1]
-        console.log(1, token);
-        dispatch(setCredentials(state, {token, user: jwt(token).name}))
-        navigate('/products')
-        // if (!location.pathname.includes('products')) {
-        //     window.location.assign(`https://uj-ebiznes-frontend.azurewebsites.net/products`)
-        // }
     }, [location, navigate])
 
     return null
