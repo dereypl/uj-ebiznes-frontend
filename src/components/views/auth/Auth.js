@@ -11,11 +11,10 @@ const Auth = () => {
     const state = useSelector(getAuthStateRoot)
 
     useEffect(() => {
+        const token = location.search.split('=')[1]
         if (window.location.protocol === "https:") {
-            window.location.protocol = "http:";
-            window.location.reload();
+            window.location.assign(`http://uj-ebiznes-frontend.azurewebsites.net/auth?token=${token}`)
         } else {
-            const token = location.search.split('=')[1]
             console.log(1, token);
             dispatch(setCredentials(state, {token, user: jwt(token).name}))
             navigate('/products')
