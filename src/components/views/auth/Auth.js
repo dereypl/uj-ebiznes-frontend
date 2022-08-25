@@ -11,7 +11,7 @@ const Auth = () => {
     const state = useSelector(getAuthStateRoot)
 
     useEffect(() => {
-        if (window.location.protocol !== "https:") {
+        if (window.location.protocol === "https:") {
             window.location.protocol = "http:";
             window.location.reload();
         } else {
