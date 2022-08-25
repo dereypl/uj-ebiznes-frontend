@@ -15,7 +15,6 @@ const Auth = () => {
         if (window.location.protocol === "https:") {
             window.location.assign(`http://uj-ebiznes-frontend.azurewebsites.net/auth?token=${token}`)
         } else {
-            console.log(1, token);
             dispatch(setCredentials(state, {token, user: jwt(token).name}))
             navigate('/products')
         }

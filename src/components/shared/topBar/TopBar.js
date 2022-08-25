@@ -2,11 +2,12 @@ import React, {useContext} from 'react';
 import {useMatch, useNavigate} from "react-router-dom";
 import {Basket, CurrentUser, FixedBar, ShoppingCartIconStyled} from "./TopBar.styles";
 import {BasketContext} from "../../../context/BasketContext";
-import {AuthContext} from "../../../context/AuthContext";
+import {useSelector} from "react-redux";
+import {getAuthStateRoot} from "../../../store/reducers/auth";
 
 const TopBar = () => {
     let navigate = useNavigate();
-    const {user} = useContext(AuthContext)
+    const {user} = useSelector(getAuthStateRoot)
     const isBasketRoute = useMatch("basket")
     const {products} = useContext(BasketContext)
     const productsCount = products.length
