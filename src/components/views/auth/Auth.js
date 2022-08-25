@@ -11,6 +11,11 @@ const Auth = () => {
     const state = useSelector(getAuthStateRoot)
 
     useEffect(() => {
+        if (window.location.protocol !== "https:") {
+            window.location.protocol = "http:";
+            window.location.reload();
+        }
+
         const token = location.search.split('=')[1]
         console.log(1, token);
         dispatch(setCredentials(state, {token, user: jwt(token).name}))
