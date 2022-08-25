@@ -13,6 +13,7 @@ export const AuthContextProvider = ({children}) => {
     const {token} = useSelector(getAuthStateRoot)
 
     useEffect(() => {
+        console.log({token});
         if (!token && location.pathname !== '/') {
             navigate('/')
         }
