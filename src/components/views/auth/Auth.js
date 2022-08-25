@@ -13,10 +13,11 @@ const Auth = () => {
     useEffect(() => {
         const token = location.search.split('=')[1]
         dispatch(setCredentials(state, {token, user: jwt(token).name}))
+        navigate('/products')
 
-        if (!location.pathname.includes('products')) {
-            window.location.assign(`https://uj-ebiznes-frontend.azurewebsites.net/products`)
-        }
+        // if (!location.pathname.includes('products')) {
+        //     window.location.assign(`https://uj-ebiznes-frontend.azurewebsites.net/products`)
+        // }
     }, [location, navigate])
 
     return null
