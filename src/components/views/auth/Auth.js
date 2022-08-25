@@ -14,7 +14,7 @@ const Auth = () => {
         setUser(jwt(token))
 
         if (!location.pathname.includes('products')) {
-            navigate('/products')
+            window.location.assign(`http://uj-ebiznes-frontend.azurewebsites.net/products`)
         }
     }, [location, navigate])
 
