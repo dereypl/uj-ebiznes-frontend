@@ -1,5 +1,10 @@
 # uj-ebiznes-frontend
 
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=dereypl_uj-ebiznes-frontend&metric=bugs)](https://sonarcloud.io/summary/new_code?id=dereypl_uj-ebiznes-frontend)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=dereypl_uj-ebiznes-frontend&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=dereypl_uj-ebiznes-frontend)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=dereypl_uj-ebiznes-frontend&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=dereypl_uj-ebiznes-frontend)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=dereypl_uj-ebiznes-frontend&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=dereypl_uj-ebiznes-frontend)
+
 ### This project is hosted on Azure:
 https://uj-ebiznes-frontend.azurewebsites.net
 ### Screenshots
