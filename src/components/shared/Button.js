@@ -5,7 +5,6 @@ const Button = styled.button>`
   padding: 0;
   margin-top: ${({marginTop}) => marginTop || '0'};
   margin-right: ${({marginRight}) => marginRight || '0'};
-  background-color: ${({theme}) => theme.colors.main_dark};
   width: ${({width}) => width || '30rem'};
   height: ${({height}) => height || '4.5rem'};
   border: none;
@@ -17,7 +16,6 @@ const Button = styled.button>`
   align-items: center;
   cursor: pointer;
   transition: background-position .3s;
-  background-color: ${({theme}) => theme.colors.main_dark};
   color: ${({theme}) => theme.colors.light_gray_border};
   background-position: 0;
   background-size: 220%;

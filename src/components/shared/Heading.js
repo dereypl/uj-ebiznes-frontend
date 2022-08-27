@@ -2,9 +2,8 @@ import styled from "styled-components";
 
 export const Heading = styled.h1`
   display: flex;
-  color: ${({theme, color}) => color || theme.colors.main_dark};
-  font-size: ${({theme, fontSize}) => fontSize || theme.fontSize.xxl};
-  font-weight: ${({theme}) => theme.fontWeight.bold};
+  font-size: '2.3rem';
+  font-weight: 600;
   margin: ${({margin}) => margin || 0};
   padding: 0;
 `;

@@ -26,7 +26,6 @@ export const Paragraph = styled.p`
 
   span {
     margin-left: 0.5rem;
-    color: ${({theme}) => theme.colors.main_dark};
     text-decoration: underline;
   }
 `;

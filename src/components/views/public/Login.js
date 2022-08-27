@@ -10,10 +10,10 @@ const Login = () => {
 
     return (
         <Box>
-            <Heading margin={'0 0 10rem 0'}>
+            <Heading data-id={'login-header'} margin={'0 0 10rem 0'}>
                 Logowanie
             </Heading>
-            <GoogleButton onClick={handleLogin}/>
+            <GoogleButton data-id={'google-button'} onClick={handleLogin}/>
         </Box>
     );
 };
