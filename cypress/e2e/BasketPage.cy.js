@@ -1,4 +1,5 @@
-const URL = 'http://uj-ebiznes-frontend.azurewebsites.net/products'
+const TEST_PROTOCOL = 'http'
+const URL = `${TEST_PROTOCOL}://uj-ebiznes-frontend.azurewebsites.net/products`
 
 const productsList = '[data-id=products-list]'
 const basketTable = '[data-id=basket-table]'
