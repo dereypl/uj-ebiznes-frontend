@@ -13,7 +13,7 @@ const CategorySideBar = () => {
     }, [dispatch]);
 
     return (
-        <SideWrapper>
+        <SideWrapper data-id={'category-sidebar'}>
             {categories?.map(category => (
                 <Category key={category.id} active={category.id === activeId}
                           onClick={() => dispatch(setActiveCategory(category.id))}>

@@ -20,7 +20,7 @@ const TopBar = () => {
                 {user}
             </CurrentUser>
             {!isBasketRoute &&
-                <Basket itemsCount={productsCount} onClick={handleGoToBasket}>
+                <Basket data-id={"basket"} itemsCount={productsCount} onClick={handleGoToBasket}>
                     <ShoppingCartIconStyled/>
                     {productsCount ? `(${productsCount})  Przejdź do koszyka` : '  Koszyk pusty'}
                 </Basket>}

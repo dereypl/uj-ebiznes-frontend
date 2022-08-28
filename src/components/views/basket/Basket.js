@@ -46,7 +46,7 @@ const Basket = () => {
                 :
                 <>
                     <BasketHeader>Zawartość koszyka:</BasketHeader>
-                    <Table>
+                    <Table data-id={'basket-table'}>
                         <thead>
                         <Row>
                             <TableHeader>Nazwa</TableHeader>
@@ -69,8 +69,8 @@ const Basket = () => {
                         <div>{totalCost.toFixed(2)} zł</div>
                     </BasketSummary>
                     <BasketFooter>
-                        <RemoveButton onClick={() => navigate('/products')}>Wróc do sklepu</RemoveButton>
-                        <RemoveButton onClick={handlePayment}>Kupuję i płacę</RemoveButton>
+                        <RemoveButton data-id={'go-back-button'} onClick={() => navigate('/products')}>Wróc do sklepu</RemoveButton>
+                        <RemoveButton data-id={'handle-payment-button'} onClick={handlePayment}>Kupuję i płacę</RemoveButton>
                     </BasketFooter>
                 </>}
         </Wrapper>

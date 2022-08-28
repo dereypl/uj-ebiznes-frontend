@@ -47,7 +47,7 @@ const Products = () => {
             <CategorySideBar/>
             {loading ?
                 <div>Loading...</div>
-                : <Table>
+                : <Table data-id={'products-list'}>
                     <thead>
                     <Row>
                         <TableHeader>Nazwa</TableHeader>
